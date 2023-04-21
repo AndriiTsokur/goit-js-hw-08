@@ -1,15 +1,10 @@
-// const SimpleLightbox = require('simplelightbox');
-import SimpleLightbox from 'simplelightbox/dist/simple-lightbox.esm';
-import 'simplelightbox/dist/simple-lightbox.min.css';
-
 // Add imports above this line
 import { galleryItems } from './gallery-items';
 // Change code below this line
+import SimpleLightbox from 'simplelightbox';
+import 'simplelightbox/dist/simple-lightbox.min.css';
 
-// console.log(galleryItems);
-
-const galleryList = document.getElementsByClassName('gallery');
-// console.log(galleryList);
+const galleryList = document.querySelector('.gallery');
 
 makeGalleryMarkup(galleryItems);
 
@@ -19,19 +14,19 @@ const lightbox = new SimpleLightbox('.gallery a', {
 	captionDelay: 250,
 });
 
+lightbox.on('show.simplelightbox');
+
 function makeGalleryMarkup(items) {
 	const galleryItemsLayout = items
 		.map(({ preview, original, description }) => {
 			return `
-			<li class="gallery__item">
 				<a class="gallery__link" href="${original}">
 					<img
 						class="gallery__image"
-						src="${preview}" 
+						src="${preview}"
 						alt="${description}" />
 				</a>
-			</li>
-		`;
+			`;
 		})
 		.join('');
 
