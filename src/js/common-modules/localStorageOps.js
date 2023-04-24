@@ -20,4 +20,4 @@ function remove(key) {
 	localStorage.removeItem(key);
 }
 
-export default { write, read, remove };
+export { write, read, remove };
