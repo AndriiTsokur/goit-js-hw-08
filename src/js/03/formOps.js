@@ -25,6 +25,15 @@ export function handleInput(e) {
 
 export function handleSubmit(e) {
 	e.preventDefault();
+
+	emailRef.value = emailRef.value.trim();
+	messageRef.value = messageRef.value.trim();
+
+	if (!emailRef.value || !messageRef.value) {
+		alert('All fields must be filled in before submitting');
+		return;
+	}
+
 	console.log(formContent);
 
 	LocalStorageOps.remove(LOCAL_STORAGE_KEY);
